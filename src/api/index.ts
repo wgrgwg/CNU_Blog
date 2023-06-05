@@ -24,18 +24,18 @@ export const getPostList = (): Promise<AxiosResponse<IResponsePostList>> => {
 //   return null;
 // };
 
-export const getPostById = (id: string) => {
-  return instance.get('/post/${id}');
+export const getPostById = (id: string): Promise<AxiosResponse<IPostWithAd>> => {
+  return instance.get(`/posts/${id}`);
 };
 
-export const updatePostById = () => {
-  return instance.post('/posts', {
+export const updatePostById = (id: string, title: string, contents: string, tag: string) => {
+  return instance.put(`/posts/${id}`, {
     title,
     contents,
     tag,
   });
 };
 
-export const deletePostById = () => {
-  return instance.delete('/post/${id}');
+export const deletePostById = (id: string) => {
+  return instance.delete(`/posts/${id}`);
 };

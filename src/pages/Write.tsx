@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { createPost, getPostById, getPostList, updatePostById } from '../api';
+import { createPost, getPostById, updatePostById } from '../api';
 import { TAG } from '../api/types';
 
 const TitleInput = styled.input`
@@ -144,7 +144,11 @@ const Write = () => {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <div style={{ height: 'calc(100% - 4rem)', paddingBottom: '4rem' }}>
         <TitleInput placeholder="제목을 입력하세요" value={title} onChange={handleChangeTitle} />
-        <TagSelect value={tag} onChange={handleChangeTag} placeholder={'태그를 선택하세요'}></TagSelect>
+        <TagSelect value={tag} onChange={handleChangeTag} placeholder={'태그를 선택하세요'}>
+          {tagList.map(tag => {
+            return <option key={tag}>{tag}</option>;
+          })}
+        </TagSelect>
         <Editor value={content} onChange={handleChangeContent} placeholder="내용을 입력하세요" />
       </div>
       <BottomSheet>
