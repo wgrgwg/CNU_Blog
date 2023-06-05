@@ -9,16 +9,16 @@ import Header from './components/Header';
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.DEV ? '/' : '/CNU/Blog/'}>
       <Routes>
         <Route element={<Header />}>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/resume" element={<Resume />} />
           </Route>
-          {/*todo (3-3) Post 추가*/}
+          <Route path="/post/:postId" element={<Post />} />
         </Route>
-        {/*todo (5-1) Write 추가*/}
+        <Route path="/write" element={<Write />} />
       </Routes>
     </Router>
   );

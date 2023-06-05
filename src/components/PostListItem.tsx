@@ -23,7 +23,18 @@ const Contents = styled.p`
 `;
 
 const PostListItem = (props: IPost) => {
-  return <div>{/*todo (3-2) 게시글 목록 아이템 작성*/}</div>;
+  const { id, title, contents, tag } = props;
+  return (
+    <div>
+      <ItemLink to={`/post/${id}`}>
+        <h2>{title}</h2>
+        <Contents>
+          {contents}
+          <Tag>{tag}</Tag>
+        </Contents>
+      </ItemLink>
+    </div>
+  );
 };
 
 export default PostListItem;
